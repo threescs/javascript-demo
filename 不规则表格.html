@@ -1,0 +1,30 @@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>teacher</th>
+            <th>student</th>
+            <th>project</th>
+        </tr>
+    </thead>
+    <tbody ng-repeat="teacher in vm.teachers">
+        <tr ng-repeat="student in teacher.student track by $index">
+            <td ng-if="$index ==0" rowspan={{teacher.student.length}}>{{teacher.name}}</td>
+            <td>
+                <span ng-bind="student.name"></span>
+            </td>
+            <td><span ng-bind="student.project"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- 问题没有实际价值，缺少关键内容，没有改进余地
+我有一条json如下：
+
+[
+{"teacher":"Tom","student":[{"name":"stuA","project":"projectA"},{"name":"stuB","project":"projectB"}]},
+{"teacher":"Jerry","student":[{"name":"stuC","project":"projectC"},{"name":"stuD","project":"projectD"},{"name":"stuE","project":"projectE"}]},
+{"teacher":"Lee","student":[{"name":"stuF","project":"projectF"}]}
+] -->
+
+<!-- rowspan决定了第一个td到底对应几行给后面的td -->

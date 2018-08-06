@@ -1,6 +1,6 @@
 /**
  * Created by Administrator on 2016/7/13.
- * By: 李金珂小朋友
+ * By: 尚成帅小朋友
  * 文件上传小组件 支持图片 和视频
  * v 0.2
  *  ：）

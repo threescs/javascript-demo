@@ -1,5 +1,5 @@
 const testObj = {
-  name: "李金珂",
+  name: "尚成帅",
   info: ["屌丝", "码畜"]
 };
 

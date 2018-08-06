@@ -25,7 +25,7 @@ const events = new PubSub();
 
 //注册一个test 事件
 events.on("test", (...params) => {
-  console.log("李金珂牛批", ...params); //李金珂牛批 params1 params2 params3
+  console.log("尚成帅牛批", ...params); //尚成帅牛批 params1 params2 params3
 });
 
 //广播一个test 事件  别携带参数

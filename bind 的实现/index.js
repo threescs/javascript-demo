@@ -6,13 +6,13 @@ console.log(max_bind());
 
 //第二种
 const obj = {
-  name:"李金珂",
+  name:"尚成帅",
   sayName(text = "我是"){
     console.log(`${text}:${this.name}`)
   }
 }
 
-obj.sayName()   //我是:李金珂
+obj.sayName()   //我是:尚成帅
 
 obj.sayName.bind({name:'盲僧'})('我不是')   //我不是:盲僧 改变了 this 指针
 

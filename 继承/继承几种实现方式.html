@@ -9,7 +9,7 @@
 <script>
 //第一种   call()   或apply()
 function a(){
-	this.name = "李金珂"
+	this.name = "尚成帅"
 }
 function b( age, sex ){
 	a.call(this);       //b继承a的属性
@@ -20,7 +20,7 @@ function b( age, sex ){
 	}
 }
 var c = new b('哈哈哈',18,'男');
-c.sayName();       //李金珂
+c.sayName();       //尚成帅
 
 
 //第二种  prototype 模式

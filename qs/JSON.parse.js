@@ -20,7 +20,7 @@ console.log(newObj);//{ id: 1, name: 'LIJINKE' }
 //将对象key 下划线 转成驼峰
 
 const json = {
-    "user_name": "李金珂",
+    "user_name": "尚成帅",
     "user_age": 18
 }
 
@@ -31,5 +31,5 @@ const newJson = JSON.parse(
 )
 
 
-//{ userName: '李金珂', userAge: 18 }
+//{ userName: '尚成帅', userAge: 18 }
 console.log(newJson);
