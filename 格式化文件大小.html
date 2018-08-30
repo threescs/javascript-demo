@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>格式化文件大小</title>
+</head>
+
+<body>
+    <script>
+        const formatFileSize = fileSize => {
+            const sizeUnitArr = ['Byte', 'KB', 'MB', 'GB'];
+            if (fileSize == 0) {
+                return '0 KB';
+            }
+            const i = parseInt(Math.floor(Math.log(fileSize) / Math.log(1024)));
+            if (i == 0) {
+                return fileSize + sizeUnitArr[i];
+            }
+            return (fileSize / Math.pow(1024, i)).toFixed(1) + sizeUnitArr[i];
+        };
+
+
+        console.log(formatFileSize(1024)); //1.0KB
+        console.log(formatFileSize(1000)); //1000Byte
+        console.log(formatFileSize(1024 * 10000)); //9.8MB
+    </script>
+</body>
+
+</html>
