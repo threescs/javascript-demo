@@ -1,4 +1,4 @@
-const str = " 李 金 珂  "
+const str = " 尚 成 帅 "
 
 console.log(str.trim());
 
