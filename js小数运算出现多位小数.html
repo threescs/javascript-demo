@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js小数运算出现多位小数的问题</title>
+</head>
+<body>
+    <!-- 
+        为什么操作小数会出现误差？
+浮点数值的最高进度是17位小数，但在进行运算的时候其精确度却远远不如整数；整数在进行运算的时候都会转成10进制； 而Java和JavaScript中计算小数运算时，都会先将十进制的小数换算到对应的二进制，一部分小数并不能完整的换算为二进制，这里就出现了第一次的误差。待小数都换算为二进制后，再进行二进制间的运算，得到二进制结果。然后再将二进制结果换算为十进制，这里通常会出现第二次的误差。
+
+所以(0.1+0.2)!=03
+     -->
+     <script>
+        // 1. 使用toFixed() 直接获取n位小数
+
+        
+        // 2. 自定义一个function
+        function addNum (num1,num2){
+            var sq1,sq2,m;
+            try{
+                sq1 = num1.toString().split('.')[1].length;
+            }
+            catch(e) {
+                sq1 = 0;
+            }
+            try {
+                sq2 = num2.toString().split('.')[1].length;
+            }
+            catch(e) {
+                sq2 = 0;
+            }
+            m = Math.pow(10,Math.max(sq1,sq2));
+            return (num1 * m + num2 * m) / m;
+        }
+        alert(addNum(0.1,0.2))
+     </script>
+</body>
+</html>
