@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cookie domain</title>
+</head>
+<body>
+    <!-- 
+        记录一下 qa给我挖的坑!!!
+        场景是这样的,
+        我们平台接了其他渠道的授权支付,
+        在支付完成后回调到我们平台'订单详情', 
+        我们这边接口 req header里面要传一个tsessionid来校验用户是否登录,
+        然后一直在跳到登录页面,
+        怀疑是否回调到我们页面传了一个新的tsessionid
+        因为tsessionid是存在cookie里面的,
+        我们知道cookie是肯定可以共享的,
+        查了很多资料, domian withCredentials ..
+        最终是项目有两个域名,qa配置的并不统一!!!
+        我也是醉了
+        不过借着这个时候,我回顾一下 cookie共享资源,
+        come on ~
+     -->
+
+
+
+
+     <!-- 
+         domain表示的是cookie所在的域 默认为请求的地址,
+         举个栗子,www.jb51.net/test/test.aspx,
+         那么domain默认为www.jb51.net。而跨域访问，如域A为t1.test.com，域B为t2.test.com，
+         那么在域A生产一个令域A和域B都能访问的cookie就要将该   {{cookie的domain设置为.test.com；}}
+         那么在域A生产一个令域A和域B都能访问的cookie就要将该cookie的domain设置为.test.com；
+
+
+         再说说path (这个暂时还没用到过)
+         path表示cookie所在的目录，asp.net默认为/，就是根目录。
+         在同一个服务器上有目录如下：/test/,/test/cd/,/test/dd/，
+         现设一个cookie1的path为/test/，
+         cookie2的path为/test/cd/
+         ，那么test下的所有页面都可以访问到cookie1，
+         而/test/和/test/dd/的子页面不能访问cookie2。
+         这是因为cookie能让其path路径下的页面访问。
+      -->
+</body>
+</html>
