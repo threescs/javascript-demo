@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>批量打印demo</title>
+</head>
+<body>
+<div id="page1"  style="page-break-after:always">
+		<table width="100%"  border="0" cellpadding="0" cellspacing="0"  >
+        <tr><td>第一页打印内容</td></tr>
+        </table>
+</div>
+<div id="page2"  style="page-break-after:always">
+		<table width="100%"  border="0" cellpadding="0" cellspacing="0" id="content" >
+        <tr><td>第二页打印内容</td></tr>
+        </table>
+</div>
+</body>
+<script>
+    // 第二种方式 在要分页的
+    // CSS里有这样的一个标签:page-break-after，其属性值包括：
+    // always :始终在对象之后插入页分割符 
+    // avoid : 避免在对象后面插入页分割符 
+    // auto : 假如需要在对象之后插入页分割符 
+    // left : 在对象后面插入页分割符直到它到达一个空白的左页边 
+
+    // 在需要分页打印的标签上加上该属性即可
+    // 需求场景遇到的问题:
+    //  我当时的情况是这样的，外层有两个div容器，要打印的内容是我拼接的html，然后append外层容器中的
+    // 当我append到body里面去 打票的二维码就不见了 因为当时用了vue-qrCode 底层实现其实用了canvas 导致canvas数据丢失,
+    // 不得以换成了 qrCode 她的底层实现是img 然后直接插入base64即可
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮询的坑</title>
+</head>
+
+<body>
+    <button id="button">暂停</button>
+    <script>
+        let timerId = 1 // 模拟计时器id，唯一性
+        let timerObj = {} // 计时器存储器
+        function getData() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve({
+                        data: 666
+                    })
+                }, 500)
+            })
+        }
+        // 轮询
+        function start() {
+            const id = timerId++
+            timerObj[id] = true
+            async function timerFn() {
+                if (!timerObj[id]) return
+                const {
+                    data
+                } = await getData() // 模拟请求
+                console.log(data)
+                setTimeout(timerFn, 1000)
+            }
+            timerFn()
+        }
+        // 暂停
+        function stop() {
+            timerObj = {}
+        }
+
+        start()
+
+        const botton = document.querySelector("#button")
+        let isPlay = true
+        botton.addEventListener("click", function () {
+            isPlay = !isPlay
+            botton.innerHTML = isPlay ? '暂停' : '播放'
+            isPlay ? start() : stop()
+        }, false)
+        
+        // 这里我为什么不用两个变量设置 true false 来解决?
+
+        // 原因: 如果我们快速点击执行start(), stop(), start()，变量依次会变成true，false，true，假如第一步的start()处于const { data } = await getData()或者setTimeout(timerFn, 1000)异步等待中，再快速点击执行第二步stop(), 第三步start()，目前变量为true，等第一步start()异步执行完成，判断变量为true，会继续循环，第三步start()创建的timeFn()也会执行，页面中就会有两个轮询，如果加上id，定时器就是唯一的，只让最新的定时器可以继续执行（timerObj[id] = true），之前的再循环的时候，已被清空（timerObj = {}），会退出循环（if (!timerObj[id]) return）
+    </script>
+</body>
+
+</html>
