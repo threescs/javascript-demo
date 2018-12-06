@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,37 +29,4 @@
         // 然后直接覆盖整个html跟标签 OK~ 分享完毕!
     </script>
 </body>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>H5移动端点击穿透问题</title>
-</head>
-<body>
-    <!-- 业务需求,最近对接了很多渠道,业务情景:h5嵌入到渠道app -->
-    <script>
-        // 问题描述1:
-        // 情景一: 蒙层点击穿透问题，点击蒙层（mask）上的关闭按钮，蒙层消失后发现触发了按钮下面元素的click事件。
-        // 情景二: 跨页面点击穿透问题：如果按钮下面恰好是一个有href属性的a标签，那么页面就会发生跳转。 
-        // 情景三: 另一种跨页面点击穿透问题：这次没有mask了，直接点击页内按钮跳转至新页，然后发现新页面中对应位置元素的click事件被触发了。
-        // 情景四：不过概率很低，就是新页面中对应位置元素恰好是a标签，然后就发生连续跳转了。 
-
-
-        // 解决方法
-        // 书写规范问题，不要混用touch和click。既然touch之后300ms会触发click，只用touch或者只用click就自然不会存在问题了。
-        // 因为最近改造公司老项目,ng1很多人共同开发,代码不规范
-        
-        // 问题描述2:这是因为在移动端浏览器，事件执行的顺序是touchstart > touchend > click。而click事件有300ms的延迟，当touchstart事件把B元素隐藏之后，隔了300ms，浏览器触发了click事件，但是此时B元素不见了，所以该事件被派发到了A元素身上。如果A元素是一个链接，那此时页面就会意外地跳转。
-        
-
-        // 在ng1的项目中我是这样解决的,从网上查了些资料,找到个比较好用的库---fastclick
-         //cdn.bootcss.com/fastclick/1.0.6/fastclick.js" 
-        //  FastClick.attach(document.body)
-        // 然后直接覆盖整个html跟标签 OK~ 分享完毕!
-    </script>
-</body>
->>>>>>> 562a42111675670fc99c7c08a646d3fb74d08c28
 </html>
