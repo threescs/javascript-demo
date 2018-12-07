@@ -13,7 +13,7 @@ const shallowCopy = (src) => {
   return dst;
 };
 
-//第一种 使用内置的 Object.assign
+//第一种 使用内置的 Object.assign(浅拷贝)
 console.log(Object.assign({}, testObj)); //{ name: '尚成帅', info: [ '屌丝', '码畜' ] }
 
 //第二种 js存储的是地址  每个属性复制后 指向的地址还是同一个
