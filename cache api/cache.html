@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>cache-api</title>
+</head>
+<body>
+  <h2>图片被缓存</h2>
+  <img src="./js.jpg" alt="">
+</body>
+<script>
+  (async ()=> {
+    const CACHE_KEY = '/js.jpg';
+
+    // cache windows 底下的一个全局变量
+    const cache = caches.open(CACHE_KEY);
+
+    // 添加缓存
+    cache.add(CACHE_KEY);
+
+    // 读取缓存
+    console.log(await cache.match(CACHE_KEY));
+
+    // 是否有这个缓存
+    console.log(await cache.has(CACHE_KEY));
+
+    // 删除缓存
+    await cache.delete(CACHE_KEY);
+
+    // 更新缓存
+    await cache.put(CACHE_KEY, 'test');
+  })
+</script>
+</html>
